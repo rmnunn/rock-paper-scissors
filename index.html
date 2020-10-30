@@ -2,10 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Rock Paper Scissors</title>
   </head>
   <body>
-
     <script>
         
         // the computer chooses rock, paper, or scissors
@@ -14,22 +13,23 @@
             return choices[Math.floor(Math.random() * choices.length)];
         }
 
+        // standardize the player selection, ex. "Rock, Paper, or Scissors"
         function playerMakesSelection() {
-            let playerSelection
-            do {
-                playerSelection = prompt("Please select Rock, Paper, or Scissors")
-                playerSelection = playerSelection.toLowerCase()
-                playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-            } while (playerSelection !== "Rock" || "Paper" || "Scissors")
-            return playerSelection
+            let selection
+            while (selection !== "Rock" || selection !== "Paper" || selection !== "Scissors") {
+                selection = prompt("Choose Rock, Paper, or Scissors", "Choose");
+                selection = selection.toLowerCase();
+                selection = selection.charAt(0).toUpperCase() + selection.slice(1);
+                if (selection == "Rock" || selection == "Paper" || selection == "Scissors") {
+                    console.log(selection)
+                    return selection
+                    break
+                 }
+            }
         }
 
-        // take the players selction and the computers selection and declare a winner.
+        // round compares player selection vs computer and adds scores
         function playRound(playerSelection, computerSelection) {
-            // standardize the player selection, ex. "Rock, Paper, or Scissors"
-            playerSelection = playerSelection.toLowerCase()
-            playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-            
             if (playerSelection == "Rock" && computerSelection == "Rock") {
                 console.log("It's a tie!")
             } else if (playerSelection == "Rock" && computerSelection == "Paper") {
@@ -60,6 +60,7 @@
             }                                               
         }
 
+        // runs the game
         function game() {
 
             playerScore = 0
