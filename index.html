@@ -13,7 +13,7 @@
             return choices[Math.floor(Math.random() * choices.length)];
         }
 
-        // standardize the player selection, ex. "Rock, Paper, or Scissors"
+        // standardizes the player selection, ex. "Rock, Paper, or Scissors"
         function playerMakesSelection() {
             let selection
             while (selection !== "Rock" || selection !== "Paper" || selection !== "Scissors") {
@@ -28,9 +28,9 @@
             }
         }
 
-        // round compares player selection vs computer and adds scores
+        // This function compares player selection vs the computer and adds scores to playerScore and computerScore variables
         function playRound(playerSelection, computerSelection) {
-            if (playerSelection == "Rock" && computerSelection == "Rock") {
+            if (playerSelection == computerSelection) {
                 console.log("It's a tie!")
             } else if (playerSelection == "Rock" && computerSelection == "Paper") {
                 computerScore = computerScore + 1
@@ -41,8 +41,6 @@
             } else if (playerSelection == "Paper" && computerSelection == "Rock") {
                 playerScore = playerScore + 1
                 console.log("Paper beats rock. You win this round!")
-            } else if (playerSelection == "Paper" && computerSelection == "Paper") {
-                console.log("It's a tie!")
             } else if (playerSelection == "Paper" && computerSelection == "Scissors") {
                 computerScore = computerScore + 1
                 console.log("Scissors beats paper. The computer wins this round.")
@@ -52,15 +50,13 @@
             } else if (playerSelection == "Scissors" && computerSelection == "Paper") {
                 playerScore = playerScore + 1
                 console.log("Scissors beats paper. You win this round!")
-            } else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-                console.log("It's a tie!")
             } else {
                 // if player returns invalid selection
                 return "Must enter valid selection"
             }                                               
         }
 
-        // runs the game
+        // Function that executes each step of the game when called
         function game() {
 
             playerScore = 0
@@ -81,6 +77,7 @@
             }
         }
 
+        // Starts the game
         console.log(game())
     </script>
   </body>
